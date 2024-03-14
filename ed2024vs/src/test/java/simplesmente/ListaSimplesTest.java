@@ -92,4 +92,14 @@ public class ListaSimplesTest {
         assertTrue(strLista.contains("20"));
     }
 
+    @Test
+    public void testToRetornarSomaDosValoresDaLista() {
+        ListaSimples lista = new ListaSimples();
+        lista.inserirUltimo(new Item(10));
+        lista.inserirUltimo(new Item(20));
+        lista.inserirUltimo(new Item(10));
+        lista.inserirUltimo(new Item(30));
+        assertEquals(70, lista.calcularSoma());
+    }
+
 }
