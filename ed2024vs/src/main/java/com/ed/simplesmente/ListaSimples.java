@@ -140,4 +140,16 @@ public class ListaSimples {
 		return msg;
 	}
 
+	//Atividade 02 Questão 7 - Soma Todos os valores da lista.
+	public int calcularSoma() {
+		int soma = 0;
+		No atual = this.prim;
+		while(atual != null) {
+			soma += atual.getInfo().getChave();
+			atual = atual.getProx();
+		}
+
+		return soma;
+	}
+
 }
