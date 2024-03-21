@@ -152,4 +152,33 @@ public class ListaSimples {
 		return soma;
 	}
 
+	//Atividade 02 Questão 8 - Média dos valores da lista
+	public double calcularMedia() {
+		double soma = 0;
+		No atual = this.prim;
+		while(atual != null) {
+			soma += atual.getInfo().getChave();
+			atual = atual.getProx();
+		}
+
+		return soma / this.quantNos;
+	}
+
+	//Atividade 02 Questão 9 - Média dos valores da lista
+	public int[] mostrarApenasPares() {
+		int [] v = new int[this.quantNos];
+		No atual = this.prim;
+		int i = 0;
+		
+		while(atual != null) {
+			if (atual.getInfo().getChave() % 2 == 0) {
+				v[i] = atual.getInfo().getChave();
+				i++;
+			}
+
+			atual = atual.getProx();
+		}
+
+		return v;
+	}
 }

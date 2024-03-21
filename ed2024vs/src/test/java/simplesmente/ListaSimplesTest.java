@@ -102,4 +102,19 @@ public class ListaSimplesTest {
         assertEquals(70, lista.calcularSoma());
     }
 
+    @Test
+    public void testRetornarApenasPares() {
+        ListaSimples lista = new ListaSimples();
+        lista.inserirUltimo(new Item(1));
+        lista.inserirUltimo(new Item(2));
+        lista.inserirUltimo(new Item(3));
+        lista.inserirUltimo(new Item(4));
+        // assertEquals(17.5, lista.calcularMedia());
+
+        int[] expected = {2, 4, 0, 0};
+        int[] actual = lista.mostrarApenasPares();
+        assertArrayEquals(expected, actual);
+
+    }
+
 }
