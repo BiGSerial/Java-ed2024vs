@@ -36,7 +36,7 @@ public class ListaContiguo {
     return (this.fim == this.info.length);
   }
 
-  //retorna verdadeiro se conseguiu inserir o novo nó no final na lista.
+  // retorna verdadeiro se conseguiu inserir o novo nó no final na lista.
   public boolean inserirUltimo(Item elem) {
     if (this.eCheia()) {
       return false;
@@ -47,8 +47,8 @@ public class ListaContiguo {
     }
   }
 
-  //retorna a posição do nó caso ele seja encontrado, caso contrário, retorna
-  //o valor do this.fim simbolizando que não foi encontrado.
+  // retorna a posição do nó caso ele seja encontrado, caso contrário, retorna
+  // o valor do this.fim simbolizando que não foi encontrado.
   public int pesquisarNo(int chave) {
     int i = 0;
     while ((i < this.fim) && (this.info[i].getChave() != chave)) {
@@ -57,7 +57,7 @@ public class ListaContiguo {
     return i;
   }
 
-  //retorna verdadeiro se conseguiu remover um nó especifico.
+  // retorna verdadeiro se conseguiu remover um nó especifico.
   public boolean removerNo(int chave) {
     int i = 0;
     while ((i < this.fim) && (this.info[i].getChave() != chave)) {
@@ -74,7 +74,7 @@ public class ListaContiguo {
     }
   }
 
-  //retorna uma String com todo o conteúdo da lista.
+  // retorna uma String com todo o conteúdo da lista.
   public String toString() {
     String msg = "";
     for (int i = 0; i < this.fim; i++) {
@@ -82,4 +82,67 @@ public class ListaContiguo {
     }
     return msg;
   }
+
+  // Atividade 3 - Questao 2B
+  public int encontrarPosicao(int valor) {
+    for (int i = 0; i < fim; i++) {
+      if (this.info[i].getChave() == valor) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  // Atividade 3 - Questao 2C
+  public int inserirAposElemento(int elemento, int novoElemento) {
+    int posicaoElemento = encontrarPosicao(elemento);
+
+    if (posicaoElemento != -1) {
+
+      if (fim < this.info.length - 1) {
+        // Desloca os elementos à direita para abrir espaço para o novo elemento
+        for (int i = fim; i > posicaoElemento + 1; i--) {
+          info[i] = info[i - 1];
+        }
+        // Insere o novo elemento após o elemento de número 8
+        this.info[posicaoElemento + 1].setChave(novoElemento);
+        fim++; // Incrementa o contador de elementos da lista
+        return 1; // Operação bem-sucedida
+      } else {
+        return -1; // Não há espaço na lista para inserir o novo elemento
+      }
+    } else {
+      return -2; // Elemento não encontrado na lista
+    }
+  }
+
+  // Atividade 3 - Questao 2D
+  public int removerElemento(int valor) {
+
+    boolean removido = false;
+
+    for (int i = 0; i < fim; i++) {
+      if (this.info[i].getChave() == valor) {
+        // Desloca os elementos à esquerda para preencher o espaço deixado pelo valor
+        // removido
+        for (int j = i; j < fim - 1; j++) {
+          info[j] = info[j + 1];
+        }
+        fim--; // Decrementa o contador de elementos da lista
+        removido = true;
+      }
+    }
+
+    if (removido) {
+
+      return 1;
+
+    } else {
+
+      return -1;
+
+    }
+
+  }
+
 }
