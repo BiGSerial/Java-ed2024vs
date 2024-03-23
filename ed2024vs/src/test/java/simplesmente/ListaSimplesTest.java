@@ -117,4 +117,36 @@ public class ListaSimplesTest {
 
     }
 
+    @Test
+    public void testCompararListas() {
+        ListaSimples lista = new ListaSimples();
+        ListaSimples lista2 = new ListaSimples();
+
+
+        lista.inserirUltimo(new Item(10));
+        lista.inserirUltimo(new Item(20));
+        lista.inserirUltimo(new Item(14));
+        lista.inserirUltimo(new Item(16));
+
+        lista2.inserirUltimo(new Item(10));
+        lista2.inserirUltimo(new Item(20));
+        lista2.inserirUltimo(new Item(14));
+        lista2.inserirUltimo(new Item(16));
+      
+        assertTrue(lista.verificarListaIdentica(lista2));
+
+        lista2.removerN(20);
+
+        assertFalse(lista.verificarListaIdentica(lista2));
+
+        lista2.inserirUltimo(new Item(20));
+
+        assertFalse(lista.verificarListaIdentica(lista2));
+        
+
+        
+       
+     
+    }
+
 }

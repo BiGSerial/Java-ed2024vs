@@ -181,4 +181,28 @@ public class ListaSimples {
 
 		return v;
 	}
+
+	//Atividade 02 Questão 10 - Verificar se as listas sao identicas
+	public boolean verificarListaIdentica(ListaSimples lista2) {
+		
+		No atual = this.prim;
+		No atual2 = lista2.prim;
+
+		if (this.quantNos != lista2.quantNos) {
+			return false;
+		} else {
+
+			while(atual != null) {
+				if (atual.getInfo().getChave() == atual2.getInfo().getChave()) {
+					atual = atual.getProx();
+					atual2 = atual2.getProx();
+				} else {
+					return false;
+				}
+			}
+
+		}		
+
+		return true;
+	}
 }
