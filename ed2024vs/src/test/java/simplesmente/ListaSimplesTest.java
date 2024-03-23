@@ -111,7 +111,7 @@ public class ListaSimplesTest {
         lista.inserirUltimo(new Item(4));
         // assertEquals(17.5, lista.calcularMedia());
 
-        int[] expected = {2, 4, 0, 0};
+        int[] expected = { 2, 4, 0, 0 };
         int[] actual = lista.mostrarApenasPares();
         assertArrayEquals(expected, actual);
 
@@ -122,7 +122,6 @@ public class ListaSimplesTest {
         ListaSimples lista = new ListaSimples();
         ListaSimples lista2 = new ListaSimples();
 
-
         lista.inserirUltimo(new Item(10));
         lista.inserirUltimo(new Item(20));
         lista.inserirUltimo(new Item(14));
@@ -132,7 +131,7 @@ public class ListaSimplesTest {
         lista2.inserirUltimo(new Item(20));
         lista2.inserirUltimo(new Item(14));
         lista2.inserirUltimo(new Item(16));
-      
+
         assertTrue(lista.verificarListaIdentica(lista2));
 
         lista2.removerN(20);
@@ -142,11 +141,74 @@ public class ListaSimplesTest {
         lista2.inserirUltimo(new Item(20));
 
         assertFalse(lista.verificarListaIdentica(lista2));
-        
 
-        
-       
-     
+    }
+
+    @Test
+    void testProcurarEAlterar_ValorExistente() {
+
+        ListaSimples lista = new ListaSimples();
+        ListaSimples listaOriginal = new ListaSimples();
+
+        lista.inserirUltimo(new Item(1));
+        lista.inserirUltimo(new Item(2));
+        lista.inserirUltimo(new Item(3));
+
+        listaOriginal.inserirUltimo(new Item(1));
+        listaOriginal.inserirUltimo(new Item(2));
+        listaOriginal.inserirUltimo(new Item(3));
+
+        assertEquals(1, lista.procurarEAlterar(2, 5));
+
+        assertFalse(listaOriginal.verificarListaIdentica(lista));
+
+        assertEquals(5, lista.getPrim().getProx().getInfo().getChave());
+    }
+
+    @Test
+    void testProcurarEAlterar_ValorInexistente() {
+
+        ListaSimples lista = new ListaSimples();
+        ListaSimples listaOriginal = new ListaSimples();
+
+        lista.inserirUltimo(new Item(1));
+        lista.inserirUltimo(new Item(2));
+        lista.inserirUltimo(new Item(3));
+
+        listaOriginal.inserirUltimo(new Item(1));
+        listaOriginal.inserirUltimo(new Item(2));
+        listaOriginal.inserirUltimo(new Item(3));
+
+        // Procurar e tentar alterar um valor inexistente
+        assertEquals(0, lista.procurarEAlterar(4, 6));
+        // Verificar se a lista permaneceu inalterada
+        assertTrue(listaOriginal.verificarListaIdentica(lista));
+        // na lista
+    }
+
+    @Test
+    void testProcurarEAlterar_ListaVazia() {
+
+        // Testar quando a lista está vazia
+        ListaSimples listaVazia = new ListaSimples();
+        assertEquals(-1, listaVazia.procurarEAlterar(1, 10)); // Procurando e tentando alterar um valor em uma lista
+                                                              // vazia
+    }
+
+    @Test
+    void testProcurarInserirOuContar() {
+
+        ListaSimples lista = new ListaSimples();
+        lista.inserirUltimo(new Item(1));
+        lista.inserirUltimo(new Item(2));
+        lista.inserirUltimo(new Item(3));
+
+        assertEquals(0, lista.procurarInserirOuContar(4));
+        assertEquals(4, lista.getUlt().getInfo().getChave());
+        assertEquals(1, lista.procurarInserirOuContar(2));
+        ListaSimples listaVazia = new ListaSimples();
+        assertEquals(0, listaVazia.procurarInserirOuContar(1));
+        assertEquals(1, listaVazia.getPrim().getInfo().getChave());
     }
 
 }

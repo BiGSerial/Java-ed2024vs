@@ -140,11 +140,11 @@ public class ListaSimples {
 		return msg;
 	}
 
-	//Atividade 02 Questão 7 - Soma Todos os valores da lista.
+	// Atividade 02 Questão 7 - Soma Todos os valores da lista.
 	public int calcularSoma() {
 		int soma = 0;
 		No atual = this.prim;
-		while(atual != null) {
+		while (atual != null) {
 			soma += atual.getInfo().getChave();
 			atual = atual.getProx();
 		}
@@ -152,11 +152,11 @@ public class ListaSimples {
 		return soma;
 	}
 
-	//Atividade 02 Questão 8 - Média dos valores da lista
+	// Atividade 02 Questão 8 - Média dos valores da lista
 	public double calcularMedia() {
 		double soma = 0;
 		No atual = this.prim;
-		while(atual != null) {
+		while (atual != null) {
 			soma += atual.getInfo().getChave();
 			atual = atual.getProx();
 		}
@@ -164,13 +164,13 @@ public class ListaSimples {
 		return soma / this.quantNos;
 	}
 
-	//Atividade 02 Questão 9 - Média dos valores da lista
+	// Atividade 02 Questão 9 - Média dos valores da lista
 	public int[] mostrarApenasPares() {
-		int [] v = new int[this.quantNos];
+		int[] v = new int[this.quantNos];
 		No atual = this.prim;
 		int i = 0;
-		
-		while(atual != null) {
+
+		while (atual != null) {
 			if (atual.getInfo().getChave() % 2 == 0) {
 				v[i] = atual.getInfo().getChave();
 				i++;
@@ -182,9 +182,9 @@ public class ListaSimples {
 		return v;
 	}
 
-	//Atividade 02 Questão 10 - Verificar se as listas sao identicas
+	// Atividade 02 Questão 10 - Verificar se as listas sao identicas
 	public boolean verificarListaIdentica(ListaSimples lista2) {
-		
+
 		No atual = this.prim;
 		No atual2 = lista2.prim;
 
@@ -192,7 +192,7 @@ public class ListaSimples {
 			return false;
 		} else {
 
-			while(atual != null) {
+			while (atual != null) {
 				if (atual.getInfo().getChave() == atual2.getInfo().getChave()) {
 					atual = atual.getProx();
 					atual2 = atual2.getProx();
@@ -201,8 +201,56 @@ public class ListaSimples {
 				}
 			}
 
-		}		
+		}
 
 		return true;
 	}
+
+	// Atividade 02 Questão 11 - VBuscar Valor e alterar por um novo
+	public int procurarEAlterar(int valorProcurado, int novoValor) {
+
+		if (this.eVazia()) {
+
+			return -1;
+		} else {
+			No atual = this.prim;
+
+			while (atual != null) {
+				if (atual.getInfo().getChave() == valorProcurado) {
+
+					atual.getInfo().setChave(novoValor);
+					return 1;
+				}
+				atual = atual.getProx();
+			}
+
+			return 0;
+		}
+	}
+
+	// Atividade 02 Questão 12 - Procura valor, se nao encontrar insere, caso contrário, conta quantas vezes aparece.
+	public int procurarInserirOuContar(int valor) {
+		if (this.eVazia()) {
+			this.inserirUltimo(new Item(valor));
+			return 0;
+		} else {
+			int contador = 0;
+			No atual = this.prim;
+			while (atual != null) {
+				if (atual.getInfo().getChave() == valor) {
+					contador++;
+				}
+				if (atual.getProx() == null) {
+					if (contador == 0) {
+						this.inserirUltimo(new Item(valor));
+					}
+					break;
+				}
+				atual = atual.getProx();
+			}
+			return contador;
+		}
+	} 
+	
+
 }
