@@ -240,7 +240,7 @@ public class ListaSimples {
 				if (atual.getInfo().getChave() == valor) {
 					contador++;
 				}
-				if (atual.getProx() == null) {
+				if (atual.getProx().getInfo() == null) {
 					if (contador == 0) {
 						this.inserirUltimo(new Item(valor));
 					}
@@ -251,6 +251,43 @@ public class ListaSimples {
 			return contador;
 		}
 	} 
+
+	// Prova Questão 5
+	public int removerUltimo() {
+		if (this.eVazia()) {			
+			return 0;
+		} else {
+			int contador = 0;
+			No atual = this.prim;
+			while (atual.getProx() != null) {
+				atual = atual.getProx();				
+			}
+
+			atual.setProx(null);
+			this.ult = atual;
+
+			return 1;
+		}
+	}
+
+
+// 'Prova Questao 6'
+	public void somarApenasPares() {
+		
+		No atual = this.prim;
+		
+		int soma = 0;
+
+		while (atual != null) {
+			if (atual.getInfo().getChave() % 2 == 0) {
+				soma += atual.getInfo().getChave();
+			}
+
+			atual = atual.getProx();
+		}
+
+		this.inserirUltimo(new Item(soma));
+	}
 	
 
 }
