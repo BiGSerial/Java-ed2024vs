@@ -1,3 +1,6 @@
+package com.ed.pilhas;
+
+import com.ed.dados.Item;
 
 public class PilhaContig {
   private Item [] info;
