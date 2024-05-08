@@ -1,6 +1,6 @@
-package filaCircular;
+package com.ed.filaCircular;
 
-import dados.Item;
+import com.ed.dados.Item;
 
 public class FilaCircular {
 	private Item[] info;
