@@ -1,13 +1,13 @@
-package pilha;
+package com.ed.pilha;
 
-import java.util.Scanner;
+import com.ed.java.util.Scanner;
 
 import dados.Item;
 
 public class MenuPrincipal {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
-		System.out.println ("digite o tamanho m·ximo da pilha");
+		System.out.println ("digite o tamanho m√°ximo da pilha");
 		int quant = scan.nextInt();
 	//instancia uma nova pilha.
 		PilhaContig pilha = new PilhaContig(quant);
@@ -21,12 +21,12 @@ public class MenuPrincipal {
 				System.out.println ("Inserir um Valor na pilha\nDigite um valor");
 				valor = scan.nextInt();
 				if (! pilha.empilhar(new Item (valor)))
-					System.out.println("Pilha est· cheia");
+					System.out.println("Pilha est√° cheia");
 				break;
 			case '2':
 				item = pilha.desempilhar();
 				if (item == null)
-					System.out.println("A pilha est· vazia");
+					System.out.println("A pilha est√° vazia");
 				else
 					System.out.println(item.getChave());
 				break;
@@ -34,13 +34,13 @@ public class MenuPrincipal {
 				System.out.println("fim do programa");
 				break;
 			default: 
-				System.out.println("opÁ„o inv·lida, tente novamente");
+				System.out.println("op√ß√£o inv√°lida, tente novamente");
 			}
 		} while (opcao!='3');
 		System.exit(0);
 	}
 	public static char menu(){
-		System.out.println("Escolha uma OpÁ„o:\n" +
+		System.out.println("Escolha uma Op√ß√£o:\n" +
 				"1. empilhar\n"+
 				"2. desempilhar\n"+
 				"3. Sair");
