@@ -1,6 +1,8 @@
 package com.ed.filaCircular;
 
-import com.ed.dados.Item;
+import com.ed.dados.*;
+
+import com.ed.pilha.PilhaContigChar;
 
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ public class BlocoPrincipalFilaCircular {
 		System.out.println("Digite o tamanho máximo da fila");
 		int tam = scan.nextInt();
 		FilaCircular fila = new FilaCircular(tam);
+		PilhaContigChar pilha = new PilhaContigChar(tam); // Criando uma pilha para testar o método de transferência
 		int valor;
 		Item item;
 		char opcao;
@@ -47,6 +50,21 @@ public class BlocoPrincipalFilaCircular {
 					int removidos = fila.removerNegativos();
 					System.out.println("Números negativos removidos da fila: " + removidos);
 					break;
+				case '5': // Teste do método somaElementos
+					int soma = fila.somaElementos();
+					System.out.println("Soma dos elementos da fila: " + soma);
+					break;
+				case '6': // Teste do método transferirDaPilha
+					pilha.empilhar(new ItemChar('A')); // Inserindo dados na pilha para transferência
+					pilha.empilhar(new ItemChar('B'));
+					pilha.empilhar(new ItemChar('C'));
+					FilaCircular novaFila = fila.transferirDaPilha(pilha);
+					System.out.println("Fila após transferência da pilha: " + novaFila.toString());
+					break;
+				case '7': // Teste do método imprimirPaginasEmOrdemDecrescente
+					PilhaContigChar pilhaImpressora = new PilhaContigChar(tam); // Criando pilha para impressora
+					fila.imprimirPaginasEmOrdemDecrescente(pilhaImpressora, fila);
+					break;
 				case '0':
 					System.out.println("Fim do programa");
 					break;
@@ -62,6 +80,9 @@ public class BlocoPrincipalFilaCircular {
 				"2. Desenfileirar\n" +
 				"3. Imprimir Fila\n" +
 				"4. Remover Negativos da Fila\n" +
+				"5. Somar Elementos da Fila\n" +
+				"6. Transferir da Pilha para Fila\n" +
+				"7. Imprimir Páginas em Ordem Decrescente\n" +
 				"0. Sair");
 	}
 }
