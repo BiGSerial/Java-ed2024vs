@@ -1,4 +1,4 @@
-package dados;
+package com.ed.dados;
 
 public class ItemChar {
 	private char chave;
