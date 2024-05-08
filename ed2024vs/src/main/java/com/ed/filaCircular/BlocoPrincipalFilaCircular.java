@@ -60,11 +60,7 @@ public class BlocoPrincipalFilaCircular {
 					pilha.empilhar(new ItemChar('C'));
 					FilaCircular novaFila = fila.transferirDaPilha(pilha);
 					System.out.println("Fila após transferência da pilha: " + novaFila.toString());
-					break;
-				case '7': // Teste do método imprimirPaginasEmOrdemDecrescente
-					PilhaContigChar pilhaImpressora = new PilhaContigChar(tam); // Criando pilha para impressora
-					fila.imprimirPaginasEmOrdemDecrescente(pilhaImpressora, fila);
-					break;
+					break;				
 				case '0':
 					System.out.println("Fim do programa");
 					break;
@@ -82,7 +78,6 @@ public class BlocoPrincipalFilaCircular {
 				"4. Remover Negativos da Fila\n" +
 				"5. Somar Elementos da Fila\n" +
 				"6. Transferir da Pilha para Fila\n" +
-				"7. Imprimir Páginas em Ordem Decrescente\n" +
 				"0. Sair");
 	}
 }
