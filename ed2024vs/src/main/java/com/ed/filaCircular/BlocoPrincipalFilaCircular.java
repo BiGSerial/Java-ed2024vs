@@ -1,8 +1,9 @@
-package filaCircular;
+package com.ed.filaCircular;
+
+import com.ed.dados.Item;
 
 import java.util.Scanner;
 
-import dados.Item;
 
 public class BlocoPrincipalFilaCircular {
 	static Scanner scan = new Scanner(System.in);
