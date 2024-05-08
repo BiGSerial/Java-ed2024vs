@@ -1,6 +1,6 @@
-package pilha;
+package com.ed.pilha;
 
-import dados.Item;
+import com.ed.dados.Item;
 
 public class PilhaContig {
 	private Item[] info;
