@@ -1,6 +1,6 @@
-package pilha;
+package com.ed.pilha;
 
-import dados.ItemChar;
+import com.ed.dados.ItemChar;
 
 public class PilhaContigChar {
 	private ItemChar[] info;
