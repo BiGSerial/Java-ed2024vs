@@ -1,6 +1,7 @@
 package com.ed.filaCircular;
 
-import com.ed.dados.Item;
+import com.ed.dados.*;
+import com.ed.pilha.PilhaContigChar;
 
 public class FilaCircular {
 	private Item[] info;
