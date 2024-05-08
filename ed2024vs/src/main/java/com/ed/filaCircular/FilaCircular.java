@@ -72,6 +72,7 @@ public class FilaCircular {
 		return msg;
 	}
 
+	// Atividade 6: Ex 1
 	public int removerNegativos() {
 		int qtdRemovidos = 0;
 		int indexAtual = this.frente;
@@ -95,6 +96,27 @@ public class FilaCircular {
 		}
 
 		return qtdRemovidos;
+	}
+
+	// Atividade 6: Ex 2
+	public int somaElementos() {
+		int soma = 0;
+		int tamanhoOriginal = tamanho;
+		while (!eVazia()) {
+			soma += desenfileirar().getChave();
+		}
+		tamanho = tamanhoOriginal;
+		return soma;
+	}
+
+	// Atividade 6: Ex 3
+	public FilaCircular transferirDaPilha(PilhaContigChar pilha) {
+		FilaCircular novaFila = new FilaCircular(pilha.getTopo());
+		while (!pilha.eVazia()) {
+			novaFila.enfileirar(new Item(pilha.desempilhar().getChave()));
+
+		}
+		return novaFila;
 	}
 
 }
