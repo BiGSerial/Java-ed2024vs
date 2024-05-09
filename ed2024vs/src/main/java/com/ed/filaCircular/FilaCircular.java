@@ -74,30 +74,27 @@ public class FilaCircular {
 	}
 
 	// Atividade 6: Ex 1
-	public int removerNegativos() {
-		int qtdRemovidos = 0;
-		int indexAtual = this.frente;
-		int indexDestino = this.frente;
+	public FilaCircular removerNegativos() {
+    FilaCircular novaFila = new FilaCircular(this.tamanho);
+    int qtdRemovidos = 0;
 
-		for (int i = 0; i < this.tamanho; i++) {
-			if (this.info[indexAtual].getChave() >= 0) {
-				this.info[indexDestino] = this.info[indexAtual];
-				indexDestino = (indexDestino + 1) % this.info.length;
-			} else {
-				qtdRemovidos++;
-			}
-			indexAtual = (indexAtual + 1) % this.info.length;
-		}
+    for (int i = 0; i < this.tamanho; i++) {
+        Item itemAtual = this.desenfileirar();
+        if (itemAtual.getChave() >= 0) {
+            novaFila.enfileirar(itemAtual);
+        } else {
+            qtdRemovidos++;
+        }
+    }
 
-		this.tras = (this.frente + this.tamanho - qtdRemovidos) % this.info.length;
-		this.tamanho -= qtdRemovidos;
+    this.info = novaFila.info;
+    this.frente = novaFila.frente;
+    this.tras = novaFila.tras;
+    this.tamanho = novaFila.tamanho;
 
-		for (int i = this.tamanho; i < this.info.length; i++) {
-			this.info[i] = null;
-		}
+    return novaFila;
+}
 
-		return qtdRemovidos;
-	}
 
 	// Atividade 6: Ex 2
 	public int somaElementos() {
