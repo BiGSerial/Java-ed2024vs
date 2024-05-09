@@ -75,24 +75,22 @@ public class FilaCircular {
 
 	// Atividade 6: Ex 1
 	public FilaCircular removerNegativos() {
-	    FilaCircular novaFila = new FilaCircular(this.tamanho);
-	    int qtdRemovidos = 0;
+		FilaCircular novaFila = new FilaCircular(this.tamanho);
+
 	
-	    for (int i = 0; i < this.tamanho; i++) {
-	        Item itemAtual = this.desenfileirar();
-	        if (itemAtual.getChave() >= 0) {
-	            novaFila.enfileirar(itemAtual);
-	        } else {
-	            qtdRemovidos++;
-	        }
-	    }
+		while (!this.eVazia()) {
+			Item itemAtual = this.desenfileirar();
+			if (itemAtual.getChave() >= 0) {
+				novaFila.enfileirar(itemAtual);
+			} 
+		}	
+		
+		this.info = novaFila.info;
+		this.frente = novaFila.frente;
+		this.tras = novaFila.tras;
+		this.tamanho = novaFila.tamanho;
 	
-	    this.info = novaFila.info;
-	    this.frente = novaFila.frente;
-	    this.tras = novaFila.tras;
-	    this.tamanho = novaFila.tamanho;
-	
-	    return novaFila;
+		return this;
 	}
 
 
