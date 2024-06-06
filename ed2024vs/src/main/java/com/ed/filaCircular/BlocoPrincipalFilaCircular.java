@@ -44,6 +44,7 @@ public class BlocoPrincipalFilaCircular {
 					} else {
 						System.out.println("O " + item.getChave() + " foi removido da fila");
 					}
+					
 					break;
 				case '3':
 					if (!fila.eVazia()) {
@@ -51,6 +52,7 @@ public class BlocoPrincipalFilaCircular {
 					} else {
 						System.out.println("A fila está vazia");
 					}
+					pausa();
 					break;
 				case '4':
 					FilaCircular removidos = fila.removerNegativos();
@@ -59,13 +61,15 @@ public class BlocoPrincipalFilaCircular {
 				case '5': // Teste do método somaElementos
 					int soma = fila.somaElementos();
 					System.out.println("Soma dos elementos da fila: " + soma);
+					pausa();
 					break;
 				case '6': // Teste do método transferirDaPilha
-					pilha.empilhar(new ItemChar('A')); // Inserindo dados na pilha para transferência
+					pilha.empilhar(new ItemChar('A')); 
 					pilha.empilhar(new ItemChar('B'));
 					pilha.empilhar(new ItemChar('C'));
 					FilaCircular novaFila = fila.transferirDaPilha(pilha);
 					System.out.println("Fila após transferência da pilha: " + novaFila.toString());
+					pausa();
 					break;
 				case '0':
 					System.out.println("Fim do programa");
@@ -96,15 +100,15 @@ public class BlocoPrincipalFilaCircular {
 	}
 
 	private static void exibirFila(FilaCircular fila) {
-		System.out.print("=> ");
+		System.out.print(YELLOW + "<=");
 		if (!fila.eVazia()) {
 			System.out.print("[ ");
 			for (int i = 0; i < fila.getTamanho(); i++) {
 				System.out.print(fila.get(i).getChave() + " ");
 			}
-			System.out.println("]\n");
+			System.out.println("]<=\n" + RESET);
 		} else {
-			System.out.println("[ empty ]\n");
+			System.out.println("[ empty ]<=\n");
 		}
 	}
 
@@ -116,5 +120,11 @@ public class BlocoPrincipalFilaCircular {
 		} else {
 			System.out.println(GREEN + "A fila não está cheia nem vazia.\n" + RESET);
 		}
+	}
+
+	public static void pausa() {
+		System.out.println("Pressione Enter para continuar...");
+		scan.nextLine();
+		scan.nextLine();
 	}
 }

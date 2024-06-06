@@ -7,6 +7,11 @@ import java.util.Scanner;
 import com.ed.dados.Item;
 
 public class MenuPrincipal {
+	private static final String RESET = "\033[0m";
+	private static final String GREEN = "\033[0;32m"; // Cor verde para indicar algo positivo
+	private static final String RED = "\033[0;31m"; // Cor vermelha para indicar algo negativo
+	private static final String YELLOW = "\033[0;33m"; // Cor amarela para avisos
+	
 	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) throws IOException {

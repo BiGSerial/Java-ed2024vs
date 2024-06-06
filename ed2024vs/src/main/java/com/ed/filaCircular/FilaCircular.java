@@ -99,6 +99,7 @@ public class FilaCircular {
 
 		return this;
 	}
+	
 
 	public int somaElementos() {
 		int soma = 0;

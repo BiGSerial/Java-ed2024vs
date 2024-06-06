@@ -4,6 +4,11 @@ import java.util.Scanner;
 import com.ed.dados.Item;
 
 public class PrincipaListaDupla {
+    private static final String RESET = "\033[0m";
+	private static final String GREEN = "\033[0;32m"; // Cor verde para indicar algo positivo
+	private static final String RED = "\033[0;31m"; // Cor vermelha para indicar algo negativo
+	private static final String YELLOW = "\033[0;33m"; // Cor amarela para avisos
+
     static Scanner scan = new Scanner(System.in);
     static ListaDupla lista = new ListaDupla();
 
@@ -39,6 +44,7 @@ public class PrincipaListaDupla {
                     } else {
                         System.out.println("Elemento não encontrado.");
                     }
+                    pausa();
                     break;
                 case 3:
                     System.out.println("Digite a chave do elemento a ser removido:");
@@ -48,6 +54,7 @@ public class PrincipaListaDupla {
                     } else {
                         System.out.println("Elemento não encontrado.");
                     }
+                    pausa();
                     break;
                 case 4:
                     System.out.println("Criando outra lista para concatenar:");
@@ -57,6 +64,7 @@ public class PrincipaListaDupla {
                     }
                     System.out.println("Concatenando com outra lista:");
                     lista.concatenar(outraLista);
+                    pausa();
                     break;
                 case 5:
                     System.out.println("Partindo a lista ao meio:");
@@ -75,9 +83,11 @@ public class PrincipaListaDupla {
                 case 7:
                     double media = lista.calcularMedia();
                     System.out.println("A média dos elementos da lista é: " + media);
+                    pausa();
                     break;
                 case 8:
                     lista.removerValoresZero();
+  
                     break;
                 case 9:
                     System.out.println("Encerrando o programa.");
@@ -96,6 +106,6 @@ public class PrincipaListaDupla {
     public static void pausa() {
         System.out.println("Pressione Enter para continuar...");
         scan.nextLine();
-
+        scan.nextLine();
     }
 }
